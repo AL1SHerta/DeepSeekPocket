@@ -1,6 +1,4 @@
 # DeepSeekPocket
-<img width="1254" height="1254" alt="file_00000000423c821183d8a00f955edd41" src="https://github.com/user-attachments/assets/ebe24080-9b47-473d-8da6-0b5052927ca8" />
-
 项目简介
 
 一、设计初衷
@@ -11,19 +9,14 @@
 
 1. 实时余额显示：直观展示账户当前余额，方便用户随时了解余额情况。
 
-<img width="1272" height="1071" alt="111" src="https://github.com/user-attachments/assets/10d254a8-68f2-479a-9853-53ee8852efee" />
 2. 收费时段显示：展示相关服务的收费时段信息，帮助用户了解不同时间段的计费情况。
-<img width="1272" height="531" alt="112" src="https://github.com/user-attachments/assets/a75235ef-5a15-48da-9894-06feea4fd7b7" />
 3. 当日用量显示：展示当日用量信息，便于用户掌握每日资源使用情况。
 
-<img width="1272" height="390" alt="22" src="https://github.com/user-attachments/assets/54e94620-88ab-44de-91ae-ca246e834742" />
 4. 快捷跳转官网充值：提供官方充值入口的快捷跳转功能，方便用户前往官方网站进行充值操作。
 
 5. 低余额提醒：当账户余额低于设定阈值时，向用户发出提醒，帮助用户及时关注余额变化。
 
 6. 简洁直观的界面：支持创建桌面小组件以及常驻通知，简洁直观地看到余额
-<img width="1272" height="1092" alt="Screenshot_2026-10-29-00-21-12-33_b783bf34423954" src="https://github.com/user-attachments/assets/61d89bb3-ea7f-43ae-a504-bc996c1cd8de" />
-<img width="1272" height="295" alt="Screenshot_2026-10-29-00-21-01-20_b783bf34423954" src="https://github.com/user-attachments/assets/0565e7eb-a43f-4d4a-8bcd-1c899c641ef3" />
 三、免责声明
 
 1. 本软件仅作为辅助查询与信息展示工具使用，不提供任何形式的官方账户服务、支付服务或充值服务。
