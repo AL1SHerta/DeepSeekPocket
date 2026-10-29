@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    余额小组件（4×1，唯一尺寸）。
+
+    排版：上排左「应用名」+ 右「计费时段徽标」；下排「总余额 ¥xx │ 今日用量 ¥xx」，
+    两段用 1dp 竖线隔开。竖线用 TextView 而不是 View——RemoteViews 的 View 白名单里没有
+    裸 View，用它会直接抛 InflateException。
+-->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/widget_glass_bg_medium"
+    android:paddingStart="13dp"
+    android:paddingTop="6dp"
+    android:paddingEnd="13dp"
+    android:paddingBottom="6dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <!-- 第一行：应用名 + 时段徽标 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/widget_app_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:includeFontPadding="false"
+                android:letterSpacing="0.08"
+                android:maxLines="1"
+                android:text="@string/widget_app_name"
+                android:textColor="@color/widget_text_secondary"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/widget_badge_peak"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/widget_badge_peak"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:paddingStart="6dp"
+                android:paddingTop="2dp"
+                android:paddingEnd="6dp"
+                android:paddingBottom="2dp"
+                android:text="@string/widget_badge_placeholder"
+                android:textColor="@color/widget_badge_peak_text"
+                android:textSize="10sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <!-- 第二行：总余额 │ 今日用量 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/widget_label_balance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:includeFontPadding="false"
+                android:letterSpacing="0.03"
+                android:maxLines="1"
+                android:text="@string/widget_balance_title"
+                android:textColor="@color/widget_text_secondary"
+                android:textSize="11sp" />
+
+            <TextView
+                android:id="@+id/widget_value_balance"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_weight="1"
+                android:autoSizeMaxTextSize="20sp"
+                android:autoSizeMinTextSize="13sp"
+                android:autoSizeStepGranularity="1sp"
+                android:autoSizeTextType="uniform"
+                android:ellipsize="end"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="start"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:text="@string/widget_value_placeholder"
+                android:textColor="@color/widget_text_accent"
+                android:textStyle="bold" />
+
+            <!-- 竖线分隔（TextView 才在 RemoteViews 白名单里） -->
+            <TextView
+                android:layout_width="1dp"
+                android:layout_height="15dp"
+                android:layout_marginStart="9dp"
+                android:layout_marginEnd="9dp"
+                android:background="@color/widget_divider" />
+
+            <TextView
+                android:id="@+id/widget_label_usage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:includeFontPadding="false"
+                android:letterSpacing="0.03"
+                android:maxLines="1"
+                android:text="@string/widget_usage_title"
+                android:textColor="@color/widget_text_secondary"
+                android:textSize="11sp" />
+
+            <TextView
+                android:id="@+id/widget_value_usage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:includeFontPadding="false"
+                android:fontFamily="sans-serif-medium"
+                android:maxLines="1"
+                android:text="—"
+                android:textColor="@color/widget_text_primary"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

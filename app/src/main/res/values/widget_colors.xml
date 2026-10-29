@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    桌面小组件专用配色（浅色模式）。
+    同名 color 在 values-night/widget_colors.xml 里定义深色版本，
+    布局一律引用这里的 color 名字，由系统按当前深/浅色模式自动切换。
+    刻意不写进 colors.xml / themes.xml，避免与 App 内 Compose 配色互相影响。
+-->
+<resources>
+
+    <!-- 磨砂玻璃板体：从上方的高透明白渐变到下方的淡蓝白 -->
+    <color name="widget_glass_top">#EDFFFFFF</color>
+    <color name="widget_glass_bottom">#C7E7EEFF</color>
+    <!-- 1dp 描边：浅色玻璃板体本身接近白色，白色描边叠上去几乎看不见，
+         所以这里改用低透明度深蓝灰，勾出玻璃边缘（深色模式对应白色高光描边）。 -->
+    <color name="widget_glass_stroke">#2616213A</color>
+    <!-- 顶部那道更亮的细高光 -->
+    <color name="widget_glass_highlight">#F2FFFFFF</color>
+    <!-- 内部低透明度色块：压住桌面花纹，保证文字可读 -->
+    <color name="widget_glass_scrim">#0D2F6FED</color>
+
+    <!-- 文字：浅色玻璃上用深色字，保证对比度 -->
+    <color name="widget_text_primary">#0B1220</color>
+    <color name="widget_text_secondary">#3D4B66</color>
+    <color name="widget_text_accent">#143C9E</color>
+    <color name="widget_divider">#1F0B1220</color>
+
+    <!-- 计费时段徽标：高峰偏红、错峰偏绿，都是半透明圆角底。
+         底色用带透明度的浅色调而不是「透明红」：10sp 小字要压在徽标底上，
+         底色太深会让深色文字对比度掉到 3:1 以下。 -->
+    <color name="widget_badge_peak_bg">#C0FFE4E0</color>
+    <color name="widget_badge_peak_text">#B3261E</color>
+    <color name="widget_badge_offpeak_bg">#C0E3F5EA</color>
+    <color name="widget_badge_offpeak_text">#14663C</color>
+
+</resources>

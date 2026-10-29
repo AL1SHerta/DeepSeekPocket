@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 高峰时段徽标底色：半透明偏红圆角，深浅色模式由同名的 @color 自动切换。 -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <corners android:radius="9dp" />
+    <solid android:color="@color/widget_badge_peak_bg" />
+</shape>

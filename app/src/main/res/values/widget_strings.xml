@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    桌面小组件专用字符串。
+    刻意从 strings.xml 里拆出来，避免与 App 内界面文案混在一起。
+-->
+<resources>
+
+    <!-- AppWidgetPicker 里显示的名称 -->
+    <string name="widget_label">DeepSeek 余额（4×1）</string>
+
+    <!-- 选择器里的说明文案（android:description，API 31+ 使用） -->
+    <string name="widget_desc">4×1 · 总余额、今日用量与当前计费时段</string>
+
+    <!-- 小组件上显示的应用名 -->
+    <string name="widget_app_name">DeepSeek Pocket</string>
+
+    <!-- 时段徽标还没算出结果时的占位 -->
+    <string name="widget_badge_placeholder">高峰 / 错峰</string>
+
+    <!-- 还没有数据时金额位的占位 -->
+    <string name="widget_value_placeholder">—</string>
+
+    <!-- 字段标题 -->
+    <string name="widget_balance_title">总余额</string>
+    <string name="widget_usage_title">今日用量</string>
+
+</resources>

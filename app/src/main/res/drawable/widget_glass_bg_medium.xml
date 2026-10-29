@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 中号（4x1）玻璃背景，结构同 widget_glass_bg_small，只是圆角更小以贴合横向长条。 -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="22dp" />
+            <gradient
+                android:angle="270"
+                android:endColor="@color/widget_glass_bottom"
+                android:startColor="@color/widget_glass_top" />
+            <stroke
+                android:width="1dp"
+                android:color="@color/widget_glass_stroke" />
+        </shape>
+    </item>
+
+    <item
+        android:bottom="1dp"
+        android:left="1dp"
+        android:right="1dp"
+        android:top="1dp">
+        <shape android:shape="rectangle">
+            <corners android:radius="21dp" />
+            <solid android:color="@color/widget_glass_scrim" />
+        </shape>
+    </item>
+
+    <item
+        android:gravity="top"
+        android:height="1dp"
+        android:left="20dp"
+        android:right="20dp"
+        android:top="1dp">
+        <shape android:shape="rectangle">
+            <corners android:radius="1dp" />
+            <solid android:color="@color/widget_glass_highlight" />
+        </shape>
+    </item>
+
+</layer-list>

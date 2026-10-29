@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    余额小组件（4x1，唯一尺寸）。
+
+    minWidth 需要「目标列数 × 单列宽度」才拿得到 4 列：实测该平板（2880px 宽、5 列网格、
+    480dpi）单列约 180dp，360dp 只换来 2 列，所以这里给 720dp。
+    minHeight 40dp 实测已能被算成 1 行，不要再加高，否则会占掉两行。
+-->
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    android:description="@string/widget_desc"
+    android:initialLayout="@layout/widget_wide"
+    android:minHeight="40dp"
+    android:minWidth="720dp"
+    android:previewLayout="@layout/widget_wide"
+    android:resizeMode="none"
+    android:targetCellHeight="1"
+    android:targetCellWidth="4"
+    android:updatePeriodMillis="1800000"
+    android:widgetCategory="home_screen" />

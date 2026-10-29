@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">DeepSeek Pocket</string>
+
+    <!-- 通用 -->
+    <string name="action_cancel">取消</string>
+    <string name="action_save">保存</string>
+    <string name="action_delete">删除</string>
+    <string name="action_rename">重命名</string>
+    <string name="action_back">返回</string>
+    <string name="action_show">显示</string>
+    <string name="action_hide">隐藏</string>
+
+    <!-- Key 管理 -->
+    <string name="keys_title">API Keys</string>
+    <string name="keys_add">添加 Key</string>
+    <string name="keys_empty_title">还没有 API Key</string>
+    <string name="keys_empty_desc">添加一个 DeepSeek API Key 后就能查询账户余额。密钥会加密保存在本机，不会上传到任何第三方服务器。</string>
+    <string name="keys_add_dialog_title">添加 API Key</string>
+    <string name="keys_rename_dialog_title">重命名</string>
+    <string name="keys_name_label">名称</string>
+    <string name="keys_name_placeholder">例如：个人账号</string>
+    <string name="keys_key_label">API Key</string>
+    <string name="keys_key_placeholder">sk-…</string>
+    <string name="keys_in_use">使用中</string>
+    <string name="keys_delete_confirm_title">删除这个 Key？</string>
+    <string name="keys_delete_confirm_text">删除后需要重新输入才能再次使用。已保存的余额采样不受影响。</string>
+    <string name="keys_security_note">密钥由 Android Keystore 加密后存入本机数据库，App 不会把它发送给 DeepSeek 以外的任何服务器。</string>
+    <string name="keys_last_used_prefix">最近使用：</string>
+    <string name="keys_last_used_never">尚未使用</string>
+    <string name="keys_created_prefix">添加于 </string>
+
+    <!-- 余额预警通知 -->
+    <string name="alert_channel_name">余额预警</string>
+    <string name="alert_channel_description">余额低于你设定的阈值时提醒</string>
+    <string name="alert_title">DeepSeek 余额偏低</string>
+    <string name="alert_text">当前 %1$s，已低于阈值 %2$s</string>
+    <string name="alert_text_long">当前余额 %1$s，已低于你设定的阈值 %2$s。打开应用可以立即刷新最新余额。</string>
+
+    <!-- 常驻通知（仅下拉通知栏可见） -->
+    <string name="status_channel_name">余额状态栏</string>
+    <string name="status_channel_description">常驻显示余额、今日用量与峰谷时段，不发声、不弹横幅</string>
+    <string name="status_title">余额 %1$s</string>
+    <string name="status_text">今日用量 %1$s · %2$s</string>
+</resources>

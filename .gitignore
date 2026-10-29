@@ -1,0 +1,29 @@
+# Gradle
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# 本地配置（含 SDK 路径，绝不入库）
+local.properties
+
+# IDE
+.idea/
+*.iml
+.kotlin/
+
+# 系统
+.DS_Store
+Thumbs.db
+
+# 密钥与本机调试产物 —— 绝不入库
+*.jks
+*.keystore
+keystore.properties
+*.apk
+*.aab
+!app/release/
+# 本地打出来的正式包（体积大，不入库；需要时用 assembleRelease 重新生成）
+!release/
+!release/*.apk
+keystore/
+captures/

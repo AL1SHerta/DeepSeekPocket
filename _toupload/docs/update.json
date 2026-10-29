@@ -1,0 +1,13 @@
+{
+  "versionCode": 5,
+  "versionName": "0.2.2",
+  "downloadUrl": "https://pan.baidu.com/s/5f31vyRh-ITtHRVpEdOciqw",
+  "notes": [
+    "修复版本检测一直查不到更新：清单地址改到 AL1SHerta/DeepSeek-Pocket 仓库根目录（原来指向不存在的仓库，每次都是 404）",
+    "更新检查加了 jsDelivr 镜像：GitHub raw 连不上时自动换源，国内网络也能查到新版本",
+    "「去网盘下载最新版」接上真实分享链接，检查失败时也能直接拿到安装包",
+    "一轮检查最长 25 秒就出结果，失败时给一句人话，不会一直转圈"
+  ],
+  "publishedAt": "2026-10-29",
+  "forceBelowVersionCode": null
+}

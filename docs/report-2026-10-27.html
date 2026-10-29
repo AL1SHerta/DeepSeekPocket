@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>DeepSeek Pocket · 功能交付报表</title>
+<style>
+  :root{
+    --brand:#2F6FED; --brand-dark:#1B4FBF; --ink:#0F172A; --muted:#5B6B85;
+    --line:#E3E9F2; --bg:#F5F8FC; --card:#FFFFFF;
+    --ok:#10603A; --ok-bg:#DCF5E6; --warn:#7A4A00; --warn-bg:#FFE9C7;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; padding:40px 24px 64px; background:var(--bg); color:var(--ink);
+    font-family:system-ui,-apple-system,"Segoe UI","Microsoft YaHei",sans-serif;
+    line-height:1.7; font-size:15px;
+  }
+  .wrap{max-width:980px;margin:0 auto;}
+  header{
+    background:linear-gradient(135deg,var(--brand),var(--brand-dark));
+    color:#fff;border-radius:24px;padding:32px 34px;margin-bottom:28px;
+  }
+  header .kicker{font-size:12px;letter-spacing:.18em;text-transform:uppercase;opacity:.8;}
+  header h1{margin:8px 0 6px;font-size:28px;line-height:1.3;}
+  header .sub{opacity:.9;font-size:14px;}
+  header .meta{margin-top:18px;display:flex;flex-wrap:wrap;gap:10px;}
+  header .meta span{
+    background:rgba(255,255,255,.16);border-radius:999px;padding:4px 12px;font-size:12.5px;
+  }
+  section{
+    background:var(--card);border:1px solid var(--line);border-radius:20px;
+    padding:26px 28px;margin-bottom:20px;
+  }
+  h2{font-size:19px;margin:0 0 14px;display:flex;align-items:center;gap:10px;}
+  h2 .n{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:26px;height:26px;border-radius:9px;background:var(--brand);color:#fff;
+    font-size:13px;font-weight:700;flex:none;
+  }
+  h3{font-size:15.5px;margin:20px 0 8px;}
+  p{margin:8px 0;}
+  .muted{color:var(--muted);}
+  code{
+    background:#EEF3FB;border-radius:6px;padding:1.5px 6px;font-size:13px;
+    font-family:"Cascadia Code",Consolas,monospace;color:#1E3A8A;
+  }
+  pre{
+    background:#0F172A;color:#E2E8F0;border-radius:14px;padding:16px 18px;
+    overflow-x:auto;font-size:13px;line-height:1.6;
+    font-family:"Cascadia Code",Consolas,monospace;
+  }
+  pre .c{color:#7C8CA6;}
+  table{width:100%;border-collapse:collapse;margin:12px 0;font-size:14px;}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top;}
+  th{color:var(--muted);font-weight:600;font-size:12.5px;text-transform:uppercase;letter-spacing:.04em;}
+  tr:last-child td{border-bottom:none;}
+  .pill{display:inline-block;border-radius:999px;padding:2px 10px;font-size:12px;font-weight:600;}
+  .pill.ok{background:var(--ok-bg);color:var(--ok);}
+  .pill.warn{background:var(--warn-bg);color:var(--warn);}
+  .pill.gray{background:#EEF2F7;color:var(--muted);}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  @media(max-width:760px){.grid{grid-template-columns:1fr;}}
+  h3{font-size:16px;margin:22px 0 8px;letter-spacing:-.01em;}
+  .box{border:1px solid var(--line);border-radius:14px;padding:14px 16px;background:#FBFDFF;}
+  .box b{display:block;font-size:13px;color:var(--muted);font-weight:600;margin-bottom:4px;}
+  .box .v{font-size:22px;font-weight:700;letter-spacing:-.01em;}
+  figure{margin:16px 0 6px;}
+  figure img{width:100%;border-radius:16px;border:1px solid var(--line);display:block;}
+  figcaption{font-size:12.5px;color:var(--muted);margin-top:8px;}
+  .note{
+    border-left:4px solid var(--brand);background:#F2F6FE;border-radius:0 12px 12px 0;
+    padding:12px 16px;margin:14px 0;font-size:14px;
+  }
+  .danger{border-left-color:#C2410C;background:#FFF6F0;}
+  ul{margin:8px 0;padding-left:22px;}
+  li{margin:5px 0;}
+  footer{text-align:center;color:var(--muted);font-size:12.5px;margin-top:28px;}
+  .tag-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;}
+  .tag{background:#EEF3FB;color:#1E3A8A;border-radius:8px;padding:3px 9px;font-size:12px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="kicker">Delivery Report</div>
+  <h1>DeepSeek Pocket · 功能交付报表</h1>
+  <div class="sub">余额 / 今日用量 / 峰谷时段 / 自动刷新 / 余额预警 / 节假日表 / 安全与隐私</div>
+  <div class="meta">
+    <span>2026-10-27</span>
+    <span>版本 0.5.0-dev</span>
+    <span>69 单元测试全通过</span>
+    <span>设备 Xiaomi 23046RP50C · Android 17</span>
+    <span>构建 Gradle 9.8.2 / AGP 9.4.1</span>
+  </div>
+</header>
+
+<section>
+  <h2><span class="n">1</span>本次交付内容</h2>
+  <p>在首页余额卡下方新增两张卡片，均已在实际设备上跑通真实接口：</p>
+  <table>
+    <tr>
+      <th style="width:150px">模块</th><th>行为</th><th style="width:110px">状态</th>
+    </tr>
+    <tr>
+      <td><b>今日用量</b></td>
+      <td>显示当天按本机余额采样推算的用量金额、采样次数、覆盖时间区间；采样不足时显示 <code>—</code> 并说明原因</td>
+      <td><span class="pill ok">已实现并验证</span></td>
+    </tr>
+    <tr>
+      <td><b>计费时段</b></td>
+      <td>显示当前处于高峰还是错峰、错峰折扣比例、距下次时段切换的倒计时，以及高峰时段表</td>
+      <td><span class="pill ok">已实现并验证</span></td>
+    </tr>
+    <tr>
+      <td><b>数据落库</b></td>
+      <td>新增 <code>balance_samples</code> 表，数据库 v1→v2 增量迁移，<b>不破坏已保存的 API Key</b></td>
+      <td><span class="pill ok">已实现并验证</span></td>
+    </tr>
+    <tr>
+      <td><b>单元测试</b></td>
+      <td>新增 21 个用例（峰谷判定 13 + 用量计算 8），累计 40 个 JVM 单测全部通过</td>
+      <td><span class="pill ok">40 / 40 通过</span></td>
+    </tr>
+  </table>
+
+  <figure>
+    <img src="screenshots/m4_home2.png" alt="首页：余额、今日用量、计费时段">
+    <figcaption>真机截图（18:20，周二）。余额 ¥57.43；今日采样 2 次；计费时段显示「错峰优惠中」，距高峰开始 14 小时 39 分钟。</figcaption>
+  </figure>
+</section>
+
+<section>
+  <h2><span class="n">2</span>数据口径：为什么「今日用量」只能这么算</h2>
+
+  <h3>2.1 官方接口能力的核查结论</h3>
+  <p>DeepSeek 官方 API（<code>api-docs.deepseek.com</code>）目前公开的端点共 10 个，全部是对话/补全、文件、模型列表与<b>余额查询</b>，其中：</p>
+  <ul>
+    <li><b>没有</b>历史用量接口、<b>没有</b>账单接口、<b>没有</b>按模型或按 Key 的用量聚合接口；</li>
+    <li><code>GET /user/balance</code> 只返回<b>当前时刻</b>的账号级余额快照（总额、赠金、充值），不带时间维度；</li>
+    <li>余额是账号级的，同一个账号下所有 API Key 共享同一份余额 —— 因此「每个 Key 分别用了多少」在物理上就无法从官方数据得到。</li>
+  </ul>
+
+  <div class="note danger">
+    <b>因此本应用不做的事：</b>不伪造用量数字，不把「余额差」直接等同于「消费额」，不宣称提供了官方账单，
+    也不调用任何社区私有接口或猜测出来的端点。
+  </div>
+
+  <h3>2.2 实际采用的算法</h3>
+  <p>每次余额查询成功，落一条采样（币种、总额、赠金、充值额、时间戳）。「今日用量」由当天采样序列推出：</p>
+  <pre><span class="c">// 今日 = 北京时间 00:00 起，按时间升序</span>
+usage = 0
+for i in 1 until samples.size:
+    delta = samples[i-1].total - samples[i].total
+    if delta &gt; 0:   usage += delta        <span class="c">// 余额下降 → 计入用量</span>
+    if delta &lt; 0:   hasRecharge = true    <span class="c">// 余额上升 → 视为充值，跳过</span></pre>
+
+  <p>把「上升」单独标记而不是相互抵消，是为了避免一笔充值把当天真实消耗抹掉。UI 上会额外提示「期间检测到充值，余额上升的部分未计入用量」。</p>
+
+  <div class="grid" style="margin-top:16px">
+    <div class="box"><b>采样方式</b><div>离散采样：只在应用查询余额时记录</div></div>
+    <div class="box"><b>最小可用条件</b><div>当天 ≥ 2 条采样才能算出变化</div></div>
+  </div>
+
+  <div class="note">
+    <b>已知误差来源（已在 UI 内明示）：</b>
+    ① 采样间隔内的多笔消耗会被合并成一次下降，无法拆分到时刻；
+    ② 应用没在运行时不会采样，因此「覆盖起点」之前的消耗无法回溯；
+    ③ 金额一律以十进制字符串存储并参与计算，不用浮点数，避免累加误差。
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">3</span>峰谷计费规则与判定</h2>
+
+  <h3>3.1 官方原文</h3>
+  <pre>"Off-peak rates are half of the peak rates.
+Peak hours are 01:00 - 04:00 and 06:00 - 10:00 UTC, Monday through Friday,
+excluding Chinese public holidays.
+All other hours are off-peak, including weekends and Chinese public holidays in full."</pre>
+  <p class="muted">来源：DeepSeek API Docs · Models &amp; Pricing（2026 年 10 月核对）</p>
+
+  <h3>3.2 换算到北京时间</h3>
+  <table>
+    <tr><th style="width:150px">时段</th><th>北京时间</th><th>UTC</th><th>价格</th></tr>
+    <tr>
+      <td><span class="pill warn">高峰</span></td>
+      <td>周一至周五 09:00–12:00、14:00–18:00</td>
+      <td>01:00–04:00、06:00–10:00</td>
+      <td>标准价</td>
+    </tr>
+    <tr>
+      <td><span class="pill ok">错峰</span></td>
+      <td>其余全部时间，含整个周末</td>
+      <td>—</td>
+      <td>标准价的 50%</td>
+    </tr>
+  </table>
+
+  <h3>3.3 判定实现要点</h3>
+  <ul>
+    <li>在 <b>UTC 时区</b>下判断星期与时刻，严格照抄官方口径，而不是在北京时间上做偏移猜测；</li>
+    <li>窗口边界<b>左闭右开</b>：<code>[01:00, 04:00)</code>，所以 04:00 整点已经算错峰；</li>
+    <li>倒计时不是「下一个窗口边界」，而是「下一次<b>状态真正翻转</b>的时刻」—— 例如周五 10:00 UTC 之后虽然跨过了一个窗口边界，但前后都算错峰，真正翻转要等到下周一 01:00 UTC；</li>
+    <li>状态每 30 秒重算一次，跨过时段边界时界面会自己更新，不需要手动刷新。</li>
+  </ul>
+
+  <div class="note danger">
+    <b>明确的能力边界：</b>官方规则还排除「中国法定节假日」，但节假日安排逐年由国务院公布且会调休，
+    本应用<b>不内置也无法离线可靠推断</b>。因此节假日当天会被当作普通工作日计算，可能被误判为高峰。
+    UI 上已如实写出这一条，不假装准确。
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">4</span>技术实现</h2>
+  <table>
+    <tr><th style="width:330px">文件</th><th>作用</th></tr>
+    <tr><td><code>domain/billing/PeakHours.kt</code></td><td>峰谷判定与「下次状态翻转」计算，纯函数、无 Android 依赖</td></tr>
+    <tr><td><code>domain/model/DailyUsage.kt</code></td><td>今日用量领域模型 + <code>DailyUsageCalculator</code>（只累加下降段）</td></tr>
+    <tr><td><code>data/local/entity/BalanceSampleEntity.kt</code></td><td>采样表实体，金额以十进制字符串存储</td></tr>
+    <tr><td><code>data/local/dao/BalanceSampleDao.kt</code></td><td>按币种+时间范围查询、最早采样时刻、过期清理</td></tr>
+    <tr><td><code>data/repository/BalanceSampleRepository.kt</code></td><td>写入采样、按「今日」聚合、裁剪历史</td></tr>
+    <tr><td><code>data/local/DeepPocketDatabase.kt</code></td><td>版本 1→2，手写 <code>MIGRATION_1_2</code> 建表建索引</td></tr>
+    <tr><td><code>ui/home/HomeViewModel.kt</code></td><td>查询成功后落采样、刷新统计、30 秒峰谷 ticker</td></tr>
+    <tr><td><code>ui/home/HomeScreen.kt</code></td><td><code>TodayUsageCard</code>、<code>PeakWindowCard</code> 两张卡片</td></tr>
+  </table>
+
+  <div class="note">
+    <b>迁移安全性：</b>平板里已经存着你的真实 API Key。数据库升级只执行
+    <code>CREATE TABLE balance_samples ...</code> 与建索引，<b>不触碰 <code>api_keys</code> 表</b>，
+    也没有使用破坏性迁移。实测升级后 Key 仍在、余额照常查询成功。
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">5</span>测试证据</h2>
+
+  <h3>5.1 JVM 单元测试：40 个，0 失败</h3>
+  <table>
+    <tr><th style="width:400px">测试类</th><th style="width:90px">用例数</th><th>覆盖内容</th></tr>
+    <tr><td><code>BalanceRepositoryTest</code></td><td>19</td><td>HTTP 200/401/402/422/429/5xx、超时、畸形 JSON、金额非数字、域名白名单</td></tr>
+    <tr><td><code>PeakHoursTest</code></td><td>13</td><td>窗口内/外、边界左闭右开、周末全天错峰、跨周末翻转、北京时间窗口换算</td></tr>
+    <tr><td><code>DailyUsageCalculatorTest</code></td><td>8</td><td>空/单条采样、下降累加、充值跳过、混合序列、乱序输入、覆盖区间</td></tr>
+  </table>
+
+  <h3>5.2 真机仪器化测试（此前已跑通）</h3>
+  <p><span class="pill ok">10 / 10 通过</span> &nbsp;在 23046RP50C（Android 17）上真实运行，包含 Android Keystore 真实加解密与 Room 真实落库：</p>
+  <ul>
+    <li>Keystore：加密后可解回原文、同一明文每次密文与 IV 均不同、密文中查不到明文、篡改密文必抛 <code>AEADBadTagException</code>；</li>
+    <li>仓库层：密文落库且不含 <code>sk-</code> 与原文、同一时刻只有一把 Key 激活、删除激活项自动回退、改名不影响密钥、过短 Key 被拒。</li>
+  </ul>
+
+  <h3>5.3 构建产物</h3>
+  <p><code>assembleDebug</code> 成功，APK 12.74 MB；<code>testDebugUnitTest</code> 全绿；真机冷启动约 1.7 秒。</p>
+</section>
+
+<section>
+  <h2><span class="n">6</span>原始截图</h2>
+  <div class="grid">
+    <figure>
+      <img src="screenshots/m3_home_success.png" alt="余额查询成功态">
+      <figcaption>余额查询成功态（真实接口）：总余额 / 赠金 / 充值分列，右上「可用」状态胶囊。</figcaption>
+    </figure>
+    <figure>
+      <img src="screenshots/m2_key_list.png" alt="Key 管理页">
+      <figcaption>Key 管理：只显示末 4 位掩码与「使用中」徽章，密文经 Android Keystore 加密落库。</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">7</span>已知限制（不做隐瞒）</h2>
+  <table>
+    <tr><th style="width:230px">限制</th><th>影响与处理</th></tr>
+    <tr>
+      <td>无官方用量接口</td>
+      <td>今日用量是采样推算值，不是计费口径；已在卡片内与页脚双重标注</td>
+    </tr>
+    <tr>
+      <td>采样是离散的</td>
+      <td>两次刷新之间的多笔消耗会合并；不运行 App 期间完全无数据</td>
+    </tr>
+    <tr>
+      <td>不内置节假日表</td>
+      <td>法定节假日可能被误判为高峰；已在 UI 明确写出</td>
+    </tr>
+    <tr>
+      <td>余额是账号级</td>
+      <td>多 Key 共享余额，无法拆分「每个 Key 用了多少」，故未提供该维度统计</td>
+    </tr>
+    <tr>
+      <td>targetSdk 36</td>
+      <td>compileSdk 37 以匹配 2026 年 androidx 要求，targetSdk 保守停在 36 以规避 Android 17 行为变更</td>
+    </tr>
+  </table>
+</section>
+
+<section>
+  <h2><span class="n">8</span>下一步</h2>
+  <p>功能层面已经齐了，等你确认这张报表后进入<b>界面美化</b>阶段，计划包括：</p>
+  <ul>
+    <li>统一视觉语言：卡片层级、圆角与阴影节奏、数字字体（等宽数字对齐）；</li>
+    <li>余额卡加入余额变化微动效，今日用量与折线图联动；</li>
+    <li>把硬编码中文文案统一抽到 <code>strings.xml</code>，为后续多语言留口；</li>
+    <li>深色模式的对比度逐项复核（尤其是品牌渐变卡与状态徽章）；</li>
+    <li>空态 / 加载态 / 错误态的插画与文案润色。</li>
+  </ul>
+
+  <div class="tag-row">
+    <span class="tag">Kotlin</span><span class="tag">Jetpack Compose</span>
+    <span class="tag">Material 3</span><span class="tag">MVVM</span>
+    <span class="tag">Room 2.8.5</span><span class="tag">Retrofit 3.0</span>
+    <span class="tag">Android Keystore</span><span class="tag">java.time</span>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">9</span>追加交付：自动刷新与余额预警</h2>
+  <p>按你后来的要求补上的三项能力，设置一次即持久保存，重启 App 后依然生效。</p>
+  <table>
+    <tr>
+      <th style="width:150px">能力</th><th>行为</th><th style="width:110px">状态</th>
+    </tr>
+    <tr>
+      <td><b>自定义刷新间隔</b></td>
+      <td>关闭 / 15 秒 / 30 秒 / 1 分钟 / 5 分钟 / 15 分钟六档，改完立刻生效并写入 DataStore</td>
+      <td><span class="pill ok">已实现并验证</span></td>
+    </tr>
+    <tr>
+      <td><b>后台巡检</b></td>
+      <td>App 不在前台时由 WorkManager 每 15 分钟查一次余额（系统最小周期），可开关</td>
+      <td><span class="pill ok">已实现并验证</span></td>
+    </tr>
+    <tr>
+      <td><b>余额预警</b></td>
+      <td>余额低于设定阈值时发本地通知；同一段低位只提醒一次，回到阈值以上后再次跌破会重新提醒</td>
+      <td><span class="pill ok">已实现并验证</span></td>
+    </tr>
+  </table>
+
+  <h3>为什么刷新要分「前台」和「后台」两套</h3>
+  <p>
+    这不是偷懒，是 Android 的硬性规则：应用在后台无法按秒级定时轮询，
+    <code>WorkManager</code> 的周期任务最小间隔就是 15 分钟。所以设置页里
+    秒级的刷新间隔只在前台生效，后台交给 WorkManager，
+    两者在界面上分别写明，不含糊其辞。
+  </p>
+
+  <h3>实测证据</h3>
+  <table>
+    <tr><th style="width:220px">验证项</th><th>结果</th></tr>
+    <tr><td>单元测试</td><td>47 个全部通过（新增 7 个专门覆盖预警去重规则：未设阈值、余额未知、首次跌破、重复跌破、回升复位、等于阈值、再次跌破）</td></tr>
+    <tr><td>自动刷新生效</td><td>设为 30 秒后静置 72 秒，「更新于」从 18:30:06 自动走到 18:31:34，采样条数 12 → 15</td></tr>
+    <tr><td>预警通知真实送达</td><td><code>dumpsys notification</code> 抓到 <code>pkg=com.ybdsj.deeppocket.debug id=1001 channel=balance_alert</code>，标题「DeepSeek 余额偏低」，正文「当前 ¥56.91，已低于阈值 ¥60.00」</td></tr>
+    <tr><td>后台任务真实排程</td><td><code>dumpsys jobscheduler</code> 中出现 <code>#BalanceCheckWorker#</code>，<code>SystemJobService</code> 已注册</td></tr>
+    <tr><td>设置持久化</td><td><code>force-stop</code> 杀进程后冷启动，30 秒 / 后台巡检开 / 阈值 60 元全部保留</td></tr>
+  </table>
+
+  <h3>相关截图</h3>
+  <div class="grid">
+    <figure><img src="screenshots/m5_settings.png" alt="设置页"><figcaption>设置页：自动刷新档位、后台巡检开关、预警阈值</figcaption></figure>
+    <figure><img src="screenshots/m5_threshold_saved.png" alt="阈值已保存"><figcaption>保存阈值后的状态与提示</figcaption></figure>
+    <figure><img src="screenshots/m5_notification.png" alt="通知栏"><figcaption>真实收到的余额预警通知</figcaption></figure>
+    <figure><img src="screenshots/m5_persist.png" alt="重启后设置保留"><figcaption>杀进程重启后设置依然保留</figcaption></figure>
+  </div>
+
+  <h3>新增的已知限制</h3>
+  <ul>
+    <li>后台巡检时间点由系统调度，不保证精确到分钟；应用被系统「强行停止」后不会再被唤醒，这是 Android 的安全机制。</li>
+    <li>预警通知需要通知权限，首次使用需在设置页点「开启通知权限」授权；未授权时页面会明确提示，不会静默失败。</li>
+    <li>秒级刷新会更快撞上账号级限流（HTTP 429），设置 15/30 秒时页面会给出提醒。</li>
+  </ul>
+</section>
+
+<section>
+  <h2><span class="n">10</span>峰谷判定为什么要内置一张节假日表</h2>
+  <p>
+    官方定价页写得很清楚：高峰是 <b>UTC 01:00–04:00 与 06:00–10:00，周一至周五，
+    且排除中国法定节假日</b>；其余时间（含整个周末、整个法定节假日）都是错峰。
+    也就是说，「今天是不是工作日」不只看星期几，还要看它是不是中国的法定节假日或调休上班日。
+  </p>
+
+  <h3>为什么不去读系统日历</h3>
+  <p>你问过能不能读日历，我当时否掉了，理由有四条：</p>
+  <ul>
+    <li><code>READ_CALENDAR</code> 授予的是<b>读取设备上全部日程</b>的权限，为了判断节假日索要这个权限属于过度授权，违反最小权限原则。</li>
+    <li>部分 ROM 根本没有节假日订阅日历，数据不一定存在。</li>
+    <li>日历事件标题是自由文本（「国庆节」「十一假期」「放假」），无法可靠解析成日期区间。</li>
+    <li>应用商店把日历列为敏感权限，需要证明核心用途；简历项目上架或面试被问到都会是减分项。</li>
+  </ul>
+  <p>
+    于是改成<b>内置一张静态表，零新增权限</b>：数据来自国务院办公厅
+    2025-11-04 发布的《关于 2026 年部分节假日安排的通知》，并抓取中国政府网与人民网两个来源交叉核对，文字一致。
+  </p>
+
+  <table>
+    <tr><th style="width:110px">节日</th><th>放假区间</th><th style="width:150px">调休上班</th></tr>
+    <tr><td>元旦</td><td>1/1（四）– 1/3（六），3 天</td><td>1/4（日）</td></tr>
+    <tr><td>春节</td><td>2/15（日）– 2/23（一），9 天</td><td>2/14（六）、2/28（六）</td></tr>
+    <tr><td>清明节</td><td>4/4（六）– 4/6（一），3 天</td><td>—</td></tr>
+    <tr><td>劳动节</td><td>5/1（五）– 5/5（二），5 天</td><td>5/9（六）</td></tr>
+    <tr><td>端午节</td><td>6/19（五）– 6/21（日），3 天</td><td>—</td></tr>
+    <tr><td>中秋节</td><td>9/25（五）– 9/27（日），3 天</td><td>—</td></tr>
+    <tr><td>国庆节</td><td>10/1（四）– 10/7（三），7 天</td><td>9/20（日）、10/10（六）</td></tr>
+  </table>
+
+  <h3>为什么「调休上班日」也必须记</h3>
+  <p>
+    这是最容易被漏掉、一漏就错的地方：<b>2026-10-10 是周六，但因为国庆调休要上班</b>。
+    如果只按星期几判断，这天会被当成周末而算成错峰——而它其实要按高峰价计费。
+    所以表里同时存两份数据：33 个放假日 + 6 个调休上班日。
+  </p>
+
+  <pre><span class="c">// HolidayCalendar.kt — 三态判定，顺序不能换</span>
+fun isWorkingDay(date: LocalDate): Boolean = when {
+    date in holidays        -&gt; false   <span class="c">// 法定节假日 → 全天错峰</span>
+    date in makeupWorkdays  -&gt; true    <span class="c">// 调休补班 → 当工作日算</span>
+    else                    -&gt; date.dayOfWeek.value &lt;= 5
+}</pre>
+
+  <h3>实测与测试</h3>
+  <table>
+    <tr><th style="width:210px">验证项</th><th>结果</th></tr>
+    <tr><td>单元测试</td><td>新增 15 个：解析、扁平化、覆盖边界、假日非工作日、补班日算工作日、普通周末、普通周一、国庆窗口判错峰、补班日窗口判高峰、跨 9 天长假的状态翻转、超期降级、真实资产校验（33 放假日 / 6 补班日 / version=2026.1）</td></tr>
+    <tr><td>真机显示</td><td>计费时段卡片出现「今天是工作日：高峰只在上面两个时段」，底部标注「已内置官方节假日安排（2026.1，覆盖至 2026-12-31），含调休上班日，表内日期判定准确」</td></tr>
+  </table>
+
+  <figure>
+    <img src="screenshots/m6_holiday.png" alt="内置节假日表生效">
+    <figcaption>真机：工作日/节假日判定已接入峰谷计算，并标注数据版本与覆盖范围</figcaption>
+  </figure>
+
+  <div class="note">
+    <b>局限（必须说清）：</b>表只覆盖到 2026-12-31。2027 年的安排国务院通常在前一年 11 月才发布，
+    到期后应用<b>不会猜</b>，而是自动退化为「按星期几判断」，并在卡片底部把降级状态写明。
+    更新方式是替换 <code>assets/cn_holidays.json</code>，不需要改代码。
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">11</span>电池优化与日志安全</h2>
+  <p>你提的两件事——「系统可能在后台冻结应用」和「日志会不会打印完整 Key」——分别是这样处理的。</p>
+
+  <h3>电池优化：只读状态 + 带你去系统设置</h3>
+  <p>
+    设置页新增「电池优化」卡片，实时读取 <code>PowerManager.isIgnoringBatteryOptimizations()</code>：
+    未加入白名单时显示「仍受电池优化限制」并给出「去设置」，已加入时显示「已豁免电池优化」。
+    每次回到该页都会重新读一次，用户在系统设置里改完切回来能立刻看到变化。
+  </p>
+  <div class="note">
+    <b>刻意不申请权限：</b>想直接弹系统确认框需要声明 <code>REQUEST_IGNORE_BATTERY_OPTIMIZATIONS</code>，
+    而该权限只允许闹钟、VoIP 等少数类别的应用使用，普通应用声明后上架会被拒。
+    所以这里只做两件事：读取状态（无需权限）、打开系统电池优化列表（无需权限），
+    是否加白名单由用户自己决定。
+  </div>
+
+  <table>
+    <tr><th style="width:210px">验证项</th><th>结果</th></tr>
+    <tr><td>未加入白名单</td><td>卡片显示「仍受电池优化限制」+「去设置」按钮</td></tr>
+    <tr><td>点击「去设置」</td><td>真实跳到 <code>com.android.settings/.Settings$AppBatteryUsageActivity</code></td></tr>
+    <tr><td>加入白名单后</td><td>切后台再回前台，卡片变为「已豁免电池优化」，「去设置」按钮消失</td></tr>
+    <tr><td>开机后能否恢复</td><td>周期任务持久化在 WorkManager 数据库；WorkManager 自带 <code>RescheduleReceiver</code> 监听 <code>BOOT_COMPLETED</code>（已在打包后的 AndroidManifest 中确认存在）；App 启动时再 sync 一次作为双保险。<b>未做真实重启验证</b>——重启平板会打断你正在用的设备，这里如实标注。</td></tr>
+  </table>
+
+  <h3>日志：从设计上就没有打印 Key 的路径</h3>
+  <ul>
+    <li>源码中 <b>零个</b> <code>Log.d/i/w/e</code> 调用，也没有 OkHttp 的 <code>HttpLoggingInterceptor</code>，即不存在把 <code>Authorization</code> 头写进 logcat 的代码路径。</li>
+    <li>请求头只在校验后交给 OkHttp，异常消息里不含 Key；错误对象只保留状态码与服务端返回的语义。</li>
+    <li>新增 <b>7 个泄漏回归测试</b>（<code>ApiKeyLeakTest</code>）：对 401 / 429 / 500 / 响应体畸形 / 网络中断 / 成功响应 / 空 Key 七种情形，断言 <code>userMessage</code>、异常 <code>message</code>、<code>toString()</code> 都不含 Key、不含「Bearer」、不含 Key 的尾段片段。任何一次重构只要把 Key 拼进异常就会立刻变红。</li>
+    <li>真机 logcat 全量搜索 <code>Bearer</code> / <code>Authorization</code> / <code>sk-</code>：无本应用记录（命中的 4 条均为系统 <code>WindowManager</code> 的 <code>task-snapshot</code> 字样，属正则误匹配）。</li>
+  </ul>
+
+  <div class="grid">
+    <figure><img src="screenshots/m7_battery_card.png" alt="电池优化卡片未加入"><figcaption>未加入白名单：明确提示会被推迟，并给出去设置入口</figcaption></figure>
+    <figure><img src="screenshots/m7_battery_optimization.png" alt="电池优化卡片已豁免"><figcaption>加入白名单后切回前台：状态变为「已豁免」</figcaption></figure>
+  </div>
+
+  <h3>测试总数变化</h3>
+  <table>
+    <tr><th>阶段</th><th>单元测试</th><th>说明</th></tr>
+    <tr><td>M4 完成时</td><td>40</td><td>网络 19 + 峰谷 13 + 用量 8</td></tr>
+    <tr><td>加设置与预警后</td><td>47</td><td>+7 预警去重规则</td></tr>
+    <tr><td>加节假日表后</td><td>62</td><td>+15 节假日表</td></tr>
+    <tr><td>加密钥泄漏回归后</td><td><b>69</b></td><td>+7 泄漏回归，全部通过、0 失败 0 跳过</td></tr>
+  </table>
+</section>
+
+<section>
+  <h2><span class="n">12</span>界面与图标</h2>
+  <p>
+    视觉部分按你的要求放在功能稳定之后做，主要三项：底部三段式导航（首页 / 管理 Key / 设置）、
+    液态玻璃卡片与实时背景模糊（可在设置页一键关闭，Android 12 以下自动降级为不透明配色）、
+    以及自适应启动图标与桌面显示名称。
+  </p>
+  <div class="grid">
+    <figure><img src="screenshots/m7_tabs_home.png" alt="首页"><figcaption>首页：余额、今日用量、计费时段三段式排布</figcaption></figure>
+    <figure><img src="screenshots/m7_tabs_settings.png" alt="设置"><figcaption>设置页：液态玻璃卡片</figcaption></figure>
+    <figure><img src="screenshots/m8_liquid_drag_mid.png" alt="液态玻璃拖动"><figcaption>液态玻璃的实时模糊与折射</figcaption></figure>
+    <figure><img src="screenshots/m10_desktop_icon.png" alt="桌面图标"><figcaption>自适应图标在桌面上的实际效果</figcaption></figure>
+  </div>
+</section>
+
+<footer>DeepSeek Pocket · 报表更新于 2026-10-27 · 所有测试数字均来自实际执行</footer>
+</div>
+</body>
+</html>

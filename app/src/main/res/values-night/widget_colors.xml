@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    桌面小组件专用配色（深色模式）。
+    color 名称必须与 values/widget_colors.xml 完全一致，否则浅色模式会找不到资源。
+-->
+<resources>
+
+    <!-- 磨砂玻璃板体：深蓝到近黑蓝的微透明渐变 -->
+    <color name="widget_glass_top">#D90E1730</color>
+    <color name="widget_glass_bottom">#BF080D1C</color>
+    <!-- 深色模式下描边改用低透明度白，避免边缘刺眼 -->
+    <color name="widget_glass_stroke">#33FFFFFF</color>
+    <color name="widget_glass_highlight">#59FFFFFF</color>
+    <color name="widget_glass_scrim">#33040A18</color>
+
+    <!-- 文字：深色玻璃上用浅色字 -->
+    <color name="widget_text_primary">#F2F6FF</color>
+    <color name="widget_text_secondary">#AEBEDD</color>
+    <color name="widget_text_accent">#AFC6FF</color>
+    <color name="widget_divider">#26FFFFFF</color>
+
+    <!-- 计费时段徽标 -->
+    <color name="widget_badge_peak_bg">#40FF8A80</color>
+    <color name="widget_badge_peak_text">#FFB4AB</color>
+    <color name="widget_badge_offpeak_bg">#406FD69B</color>
+    <color name="widget_badge_offpeak_text">#6FD69B</color>
+
+</resources>
